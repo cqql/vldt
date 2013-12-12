@@ -1,6 +1,6 @@
 # Vldt
 
-Composable validations with only [one responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle).
+Composable validations with only [one responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle). This is inspired by the clojure libary [vlad](https://github.com/logaan/vlad).
 
 ## Installation
 
