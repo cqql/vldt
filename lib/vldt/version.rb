@@ -1,0 +1,3 @@
+module Vldt
+  VERSION = "0.1.0"
+end
