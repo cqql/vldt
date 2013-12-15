@@ -1,14 +1,8 @@
 module Vldt
   # Validates that the object equals (`eql?`) a value.
-  class Eqls < Validator
+  class Eqls < Predicate
     def initialize (value)
-      @value = value
-    end
-
-    def validate (object)
-      if !@value.eql?(object)
-        { [] => [[:eqls, { value: @value}]] }
-      end
+      super(:eqls, value: value) { |o| value.eql?(o) }
     end
   end
 end

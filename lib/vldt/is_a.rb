@@ -1,13 +1,7 @@
 module Vldt
-  class IsA < Validator
+  class IsA < Predicate
     def initialize (klass)
-      @klass = klass
-    end
-
-    def validate (object)
-      if !object.is_a?(@klass)
-        { [] => [[:is_a, { class: @klass }]]}
-      end
+      super(:is_a, class: klass) { |o| o.is_a?(klass) }
     end
   end
 end

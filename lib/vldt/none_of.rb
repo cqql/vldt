@@ -1,14 +1,8 @@
 module Vldt
   # Validates that object is not listed on a black list.
-  class NoneOf
+  class NoneOf < Predicate
     def initialize (*values)
-      @values = values
-    end
-
-    def validate (object)
-      if @values.any? { |v| v == object }
-        { [] => [[:none_of, { values: @values }]] }
-      end
+      super(:none_of, values: values) { |o| values.none? { |v| v == o } }
     end
   end
 end

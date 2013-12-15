@@ -1,14 +1,8 @@
 module Vldt
   # Validates that object and value are identical (`equal?`).
-  class Identical < Validator
+  class Identical < Predicate
     def initialize (value)
-      @value = value
-    end
-
-    def validate (object)
-      if !@value.equal?(object)
-        { [] => [[:identical, { value: @value }]] }
-      end
+      super(:identical, value: value) { |o| value.equal?(o) }
     end
   end
 end

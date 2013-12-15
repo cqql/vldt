@@ -1,10 +1,8 @@
 module Vldt
   # Validates that the object is nil.
-  class Nil < Validator
-    def validate (object)
-      if !object.nil?
-        { [] => [[:nil, {}]] }
-      end
+  class Nil < Predicate
+    def initialize
+      super(:nil) { |o| o.nil? }
     end
   end
 end

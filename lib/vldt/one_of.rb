@@ -1,14 +1,8 @@
 module Vldt
   # Validates that object is included in a list of valid objects.
-  class OneOf
+  class OneOf < Predicate
     def initialize (*values)
-      @values = values
-    end
-
-    def validate (object)
-      if !@values.any? { |v| v == object }
-        { [] => [[:one_of, { values: @values }]] }
-      end
+      super(:one_of, values: values) { |o| values.any? { |v| v == o } }
     end
   end
 end
