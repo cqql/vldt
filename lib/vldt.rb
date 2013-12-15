@@ -10,6 +10,7 @@ require "vldt/nil"
 require "vldt/is_a"
 require "vldt/one_of"
 require "vldt/none_of"
+require "vldt/match"
 
 module Vldt
 
