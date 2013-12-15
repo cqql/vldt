@@ -1,8 +1,10 @@
 require "vldt/version"
+
 require "vldt/validator"
+
 require "vldt/predicate"
-require "vldt/equals"
-require "vldt/eqls"
+require "vldt/equal"
+require "vldt/eql"
 require "vldt/identical"
 require "vldt/nil"
 require "vldt/is_a"

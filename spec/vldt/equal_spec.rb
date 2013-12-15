@@ -1,5 +1,5 @@
-describe Vldt::Equals do
-  let(:validator) { Vldt::Equals.new(10) }
+describe Vldt::Equal do
+  let(:validator) { Vldt::Equal.new(10) }
 
   it "should succeed if the object equals the configured value" do
     expect(validator.validate(10)).to eq nil

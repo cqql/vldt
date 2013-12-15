@@ -1,5 +1,5 @@
-describe Vldt::Eqls do
-  let(:validator) { Vldt::Eqls.new(1.0) }
+describe Vldt::Eql do
+  let(:validator) { Vldt::Eql.new(1.0) }
 
   it "should succeed if the object eqls the value" do
     expect(validator.validate(1.0)).to eq nil
