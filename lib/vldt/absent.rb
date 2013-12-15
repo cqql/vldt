@@ -1,8 +1,8 @@
 module Vldt
   # Validates that the object is nil.
-  class Nil < Predicate
+  class Absent < Predicate
     def initialize
-      super(:nil) { |o| o.nil? }
+      super(:absent) { |o| o.nil? }
     end
   end
 end
