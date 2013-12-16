@@ -4,6 +4,7 @@ require "vldt/validator"
 
 require "vldt/join"
 require "vldt/chain"
+require "vldt/optional"
 
 require "vldt/predicate"
 require "vldt/equal"
