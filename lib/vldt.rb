@@ -1,6 +1,6 @@
 require "vldt/version"
 
-require "vldt/validation"
+require "vldt/validator"
 
 require "vldt/join"
 require "vldt/chain"
@@ -16,6 +16,8 @@ require "vldt/is_a"
 require "vldt/one_of"
 require "vldt/none_of"
 require "vldt/match"
+
+require "vldt/dsl"
 
 module Vldt
 
