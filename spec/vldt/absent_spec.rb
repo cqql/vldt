@@ -1,11 +1,11 @@
 describe Vldt::Absent do
-  let(:validator) { Vldt::Absent.new }
+  let(:validation) { Vldt::Absent.new }
 
   it "should succeed if the object is nil" do
-    expect(validator.validate(nil)).to eq nil
+    expect(validation.validate(nil)).to eq nil
   end
 
   it "should fail if the object is not nil" do
-    expect(validator.validate(true)).to eq({ [] => [[:absent, {}]] })
+    expect(validation.validate(true)).to eq({ [] => [[:absent, {}]] })
   end
 end

@@ -1,12 +1,12 @@
 module Vldt
-  # Join multiple validators together and merge all of their errors.
-  class Join < Validator
-    def initialize (*validators)
-      @validators = validators
+  # Join multiple validations together and merge all of their errors.
+  class Join < Validation
+    def initialize (*validations)
+      @validations = validations
     end
 
     def validate (object)
-      errors = @validators.map { |v| v.validate(object) }
+      errors = @validations.map { |v| v.validate(object) }
 
       if errors.any?
         errors.compact.inject(Hash.new([])) do |es, e|

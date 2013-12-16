@@ -11,7 +11,7 @@ module Vldt
   #   v = Vldt::Precidate.new(:equals, value: 5) { |o| o == 5 }
   #   v.validate(6)
   #   #=> { [] => [[:equals, { value: 5 }]] }
-  class Predicate < Validator
+  class Predicate < Validation
     def initialize (name, params = {}, &block)
       @name = name
       @params = params

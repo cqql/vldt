@@ -1,3 +1,3 @@
-describe Vldt::Validator do
+describe Vldt::Validation do
 
 end

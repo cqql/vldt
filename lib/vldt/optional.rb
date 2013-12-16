@@ -1,13 +1,13 @@
 module Vldt
-  # Applies the given validator if the object is not nil.
-  class Optional < Validator
-    def initialize (validator)
-      @validator = validator
+  # Applies the given validation if the object is not nil.
+  class Optional < Validation
+    def initialize (validation)
+      @validation = validation
     end
 
     def validate (object)
       if !object.nil?
-        errors = @validator.validate(object)
+        errors = @validation.validate(object)
 
         if errors
           errors

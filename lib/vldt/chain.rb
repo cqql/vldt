@@ -1,13 +1,13 @@
 module Vldt
-  # Chain validators together and return the errors of the first one,
+  # Chain validations together and return the errors of the first one,
   # that fails.
-  class Chain < Validator
-    def initialize (*validators)
-      @validators = validators
+  class Chain < Validation
+    def initialize (*validations)
+      @validations = validations
     end
 
     def validate (object)
-      @validators.each do |v|
+      @validations.each do |v|
         errors = v.validate(object)
 
         if errors
