@@ -2,6 +2,8 @@ require "vldt/version"
 
 require "vldt/validator"
 
+require "vldt/join"
+
 require "vldt/predicate"
 require "vldt/equal"
 require "vldt/eql"
