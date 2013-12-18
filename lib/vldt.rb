@@ -20,6 +20,8 @@ require "vldt/one_of"
 require "vldt/none_of"
 require "vldt/match"
 
+require "vldt/each"
+
 require "vldt/dsl"
 
 module Vldt
