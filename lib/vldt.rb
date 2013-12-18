@@ -6,6 +6,8 @@ require "vldt/join"
 require "vldt/chain"
 require "vldt/optional"
 
+require "vldt/validate"
+
 require "vldt/predicate"
 require "vldt/equal"
 require "vldt/eql"
