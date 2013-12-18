@@ -1,6 +1,6 @@
 require "vldt/version"
 
-require "vldt/validator"
+require "vldt/validation"
 
 require "vldt/join"
 require "vldt/chain"

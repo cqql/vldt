@@ -1,6 +1,6 @@
 describe Vldt::DSL do
   helper = Class.new do
-    import Vldt::DSL
+    include Vldt::DSL
 
     def user
 
