@@ -33,6 +33,7 @@ require "vldt/not_positive"
 require "vldt/negative"
 require "vldt/not_negative"
 
+require "vldt/array"
 require "vldt/each"
 
 require "vldt/dsl"
