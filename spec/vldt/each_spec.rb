@@ -7,8 +7,8 @@ describe Vldt::Each do
 
   it "should fail if at least one object is invalid" do
     expect(validation.validate([0, 10, 4, 2])).to eq({
-      [0] => [[:greater_than, { value: 3 }]],
-      [3] => [[:greater_than, { value: 3 }]]
+      [0] => [[:greater_than, { min: 3 }]],
+      [3] => [[:greater_than, { min: 3 }]]
     })
   end
 

@@ -1,10 +1,10 @@
 module Vldt
-  # Validates that object is greater than a given value.
+  # Validates that object is greater than a minimum.
   class GreaterThan < Chain
-    def initialize (value)
+    def initialize (min)
       super(
         Number.new,
-        Predicate.new(:greater_than, { value: value }) { |o| o > value })
+        Predicate.new(:greater_than, { min: min }) { |o| o > min })
     end
   end
 end

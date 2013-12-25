@@ -29,7 +29,7 @@ describe Vldt::DSL do
 
   it "should validate a user" do
     expect(v.user.validate({ name: "cqql#", email: "1@3", age: -3.3 })).to eq({
-      [:name] => [[:length_greater_than, { value: 6 }]],
+      [:name] => [[:length_greater_than, { min: 6 }]],
       [:age] => [[:whole_number, {}], [:positive, {}]]
     })
   end
@@ -57,7 +57,7 @@ describe Vldt::DSL do
     expect(v.recipe.validate(recipe)).to eq({
       [:user, :email] => [[:present, {}]],
       [:title] => [[:string, {}]],
-      [:ingredients] => [[:length_greater_than, { value: 2 }]],
+      [:ingredients] => [[:length_greater_than, { min: 2 }]],
       [:ingredients, 0, :unit] => [[:present, {}]],
       [:ingredients, 1, :name] => [[:one_of, { values: ["Rice", "Tomato", "Potato"] }]]
     })

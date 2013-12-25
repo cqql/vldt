@@ -5,8 +5,8 @@ module Vldt
   # arrays as well as strings are supported. You have to compose it
   # with a type validation yourself.
   class LengthLessThan < Predicate
-    def initialize (value)
-      super(:length_less_than, { value: value }) { |o| o.length < value }
+    def initialize (max)
+      super(:length_less_than, { max: max }) { |o| o.length < max }
     end
   end
 end

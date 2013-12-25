@@ -1,9 +1,10 @@
 module Vldt
+  # Validate that a number is less than a maximum.
   class LessThan < Chain
-    def initialize (value)
+    def initialize (max)
       super(
         Number.new,
-        Predicate.new(:less_than, { value: value }) { |o| o < value })
+        Predicate.new(:less_than, { max: max }) { |o| o < max })
     end
   end
 end
