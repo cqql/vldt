@@ -10,6 +10,6 @@ describe Vldt::LengthBetween do
   end
 
   it "should succeed if the length is in the required range" do
-    expect(v.validate([true, false, nil])).to eq nil
+    expect(v.validate("abc")).to eq nil
   end
 end

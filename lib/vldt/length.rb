@@ -1,9 +1,12 @@
 module Vldt
-  class Length < Chain
+  # Validate that an object is of a given length.
+  #
+  # This validation does not check the type of the object, so that
+  # arrays as well as strings are supported. You have to compose it
+  # with a type validation yourself.
+  class Length < Predicate
     def initialize (value)
-      super(
-        Array.new,
-        Predicate.new(:length, { value: value }) { |o| o.length == value })
+      super(:length, { value: value }) { |o| o.length == value }
     end
   end
 end

@@ -17,7 +17,6 @@ require "vldt/present"
 require "vldt/is_a"
 require "vldt/one_of"
 require "vldt/none_of"
-require "vldt/match"
 
 require "vldt/number"
 require "vldt/greater_than"
@@ -34,6 +33,7 @@ require "vldt/negative"
 require "vldt/not_negative"
 
 require "vldt/string"
+require "vldt/match"
 
 require "vldt/array"
 require "vldt/each"
