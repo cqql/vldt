@@ -1,15 +1,23 @@
 describe Vldt::DSL do
-  helper = Class.new do
-    include Vldt::DSL
+  v = Class.new do
+    extend Vldt::DSL
 
-    def user
-
+    def self.user
+      join(
+        validate(:name, join(
+          string,
+          length_greater_than(6))),
+        validate(:email, string),
+        validate(:age, join(whole_number, positive)))
     end
   end
 
-  let(:validation) { helper.user }
-
-  it "should create a validation" do
-    expect(validation.validate({ name: "cqql#", password: "123" }))
+  it "should validate a user" do
+    expect(v.user.validate({ name: "cqql#", email: "1@3", age: -3.3 })).to eq({
+      [:name] => [[:length, { value: 6 }]],
+      [:age] => [[:whole_number, {}], [:positive, {}]]
+    })
   end
+
+  it "should "
 end
