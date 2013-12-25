@@ -7,11 +7,11 @@ module Vldt
       end
 
       def length_greater_than (min)
-        Vldt::Length.new(min)
+        Vldt::LengthGreaterThan.new(min)
       end
 
       def length_less_than (max)
-        Vldt::Length.new(max)
+        Vldt::LengthLessThan.new(max)
       end
 
       def length_between (min, max)

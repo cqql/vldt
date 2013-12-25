@@ -6,7 +6,7 @@ module Vldt
     end
 
     def validate (object)
-      if !object.is_a?(Array)
+      if !object.is_a?(::Array)
         { [] => [[:array, {}]] }
       else
         errors = {}

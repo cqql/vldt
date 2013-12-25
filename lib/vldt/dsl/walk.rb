@@ -10,7 +10,7 @@ module Vldt
       end
 
       def each (*validations)
-        Vldt::Array.new(*validations)
+        Vldt::Each.new(*validations)
       end
     end
   end

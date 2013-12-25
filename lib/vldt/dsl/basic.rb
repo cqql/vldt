@@ -26,12 +26,12 @@ module Vldt
         Vldt::IsA.new(klass)
       end
 
-      def one_of (collection)
-        Vldt::OneOf.new(collection)
+      def one_of (*collection)
+        Vldt::OneOf.new(*collection)
       end
 
-      def none_of (collection)
-        Vldt::NoneOf.new(collection)
+      def none_of (*collection)
+        Vldt::NoneOf.new(*collection)
       end
     end
   end
