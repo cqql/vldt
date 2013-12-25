@@ -9,6 +9,7 @@ require "vldt/optional"
 require "vldt/validate"
 
 require "vldt/predicate"
+require "vldt/number"
 require "vldt/equal"
 require "vldt/eql"
 require "vldt/identical"
