@@ -1,24 +1,50 @@
 # vldt
 
-Composable validations with only [one responsibility](http://en.wikipedia.org/wiki/Single_responsibility_principle). This is inspired by the clojure libary [vlad](https://github.com/logaan/vlad).
+Easily create validations to validate any input data independent from
+the structure of your models or your database layout.
+
+This is inspired by the clojure libary [vlad](https://github.com/logaan/vlad).
+
+## Usage
+
+Let's dive right in with an example. We want to validate a
+representation of a car.
+
+```ruby
+car = {
+  driver: { age: 15 },
+  passengers: [
+    { name: "Peter Parker", age: 25 },
+    { name: "Yoda", age: 980 }
+  ],
+  tires: [
+    { condition: "happy", used_since: "2013-01-12" }
+    { condition: "good", used_since: "2013-01-12" }
+    { condition: "good", used_since: "2012" }
+    { condition: "bad" }
+  ]
+}
+```
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'vldt'
+```ruby
+gem "vldt"
+```
 
 And then execute:
 
-    $ bundle
+```sh
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install vldt
-
-## Usage
-
-TODO: Write usage instructions here
+```sh
+$ gem install vldt
+```
 
 ## Contributing
 
