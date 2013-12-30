@@ -13,6 +13,10 @@ module Vldt
       def optional (validation)
         Vldt::Optional.new(validation)
       end
+
+      def with (block, validation)
+        Vldt::With.new(block, validation)
+      end
     end
   end
 end

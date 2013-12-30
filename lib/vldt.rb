@@ -5,6 +5,7 @@ require "vldt/validation"
 require "vldt/join"
 require "vldt/chain"
 require "vldt/optional"
+require "vldt/with"
 
 require "vldt/validate"
 
