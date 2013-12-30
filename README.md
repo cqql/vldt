@@ -7,8 +7,7 @@ This is inspired by the clojure libary [vlad](https://github.com/logaan/vlad).
 
 ## Usage
 
-Let's dive right in with an example. We want to validate a
-representation of a car.
+Let's dive right in with an example. We want to validate a car.
 
 ```ruby
 car = {
