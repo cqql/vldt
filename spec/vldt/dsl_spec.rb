@@ -20,10 +20,11 @@ describe Vldt::DSL do
       join(
         validate(:user, user),
         validate(:title, string),
-        validate(:ingredients, join(
+        validate(:ingredients, chain(
           array,
-          length_greater_than(2),
-          each(ingredient))))
+          join(
+            length_greater_than(2),
+            each(ingredient)))))
     end
   end
 
