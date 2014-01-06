@@ -17,12 +17,45 @@ car = {
     { name: "Yoda", age: 980 }
   ],
   tires: [
-    { condition: "happy", used_since: "2013-01-12" }
-    { condition: "good", used_since: "2013-01-12" }
-    { condition: "good", used_since: "2012" }
+    { condition: "happy", used_since: "2013-01-12" },
+    { condition: "good", used_since: "2012-11-12" },
+    { condition: "good", used_since: "2012" },
     { condition: "bad" }
   ]
 }
+```
+
+```ruby
+class CarValidation
+  include Vldt::DSL
+
+  def car
+    join(
+      validate(:driver, person),
+      validate(:passengers, each(person)),
+      validate(:tires, each(tire)))
+  end
+
+  def person
+    join(
+      validate(:name, chain(
+        string,
+        length_between(4, 10))),
+      validate(:age, chain(
+        number,
+        whole_number,
+        positive)))
+  end
+
+  def tire
+    join(
+      validate(:condition, one_of("good", "bad")),
+      validate(:used_since, chain(
+        present,
+        with(-> date { Date.parse(date) },
+          greater_than(Date.new(2013, 1, 6))))))
+  end
+end
 ```
 
 ## Installation
