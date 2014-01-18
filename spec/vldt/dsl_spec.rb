@@ -4,22 +4,22 @@ describe Vldt::DSL do
 
     def self.user
       join(
-        validate(:name, chain(string, length_greater_than(6))),
-        validate(:email, string),
+        validate(:name, chain(Vldt::String.string, length_greater_than(6))),
+        validate(:email, Vldt::String.string),
         validate(:age, join(Vldt::Number.integer, Vldt::Number.positive)))
     end
 
     def self.ingredient
       join(
-        validate(:name, chain(string, one_of("Rice", "Tomato", "Potato"))),
+        validate(:name, chain(Vldt::String.string, one_of("Rice", "Tomato", "Potato"))),
         validate(:amount, Vldt::Number.positive),
-        validate(:unit, chain(string, length_between(3, 10))))
+        validate(:unit, chain(Vldt::String.string, length_between(3, 10))))
     end
 
     def self.recipe
       join(
         validate(:user, user),
-        validate(:title, string),
+        validate(:title, Vldt::String.string),
         validate(:ingredients, chain(
           array,
           join(

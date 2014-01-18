@@ -3,7 +3,6 @@ module Vldt
     include DSL::Composition
     include DSL::Walk
     include DSL::Basic
-    include DSL::String
     include DSL::Array
     include DSL::Length
   end
