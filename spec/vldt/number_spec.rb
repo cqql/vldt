@@ -26,4 +26,20 @@ describe Vldt::Number do
       expect(v.validate(2)).to eq nil
     end
   end
+
+  describe "#negative" do
+    let(:v) { Vldt::Number.negative }
+
+    it "should fail if the number is positive" do
+      expect(v.validate(2.2)).to eq({ [] => [[:negative, {}]] })
+    end
+
+    it "should fail if the number is zero" do
+      expect(v.validate(0)).to eq({ [] => [[:negative, {}]] })
+    end
+
+    it "should succeed if the number is negative" do
+      expect(v.validate(-2)).to eq nil
+    end
+  end
 end

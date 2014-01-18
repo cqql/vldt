@@ -47,8 +47,9 @@ module Vldt
       Vldt::NotPositive.new
     end
 
+    # Validate that a number is negative (< 0).
     def self.negative
-      Vldt::Negative.new
+      Predicate.new(:negative, {}) { |o| o < 0 }
     end
 
     def self.not_negative

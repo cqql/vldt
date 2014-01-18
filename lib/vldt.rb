@@ -29,7 +29,6 @@ require "vldt/whole_number"
 require "vldt/odd"
 require "vldt/even"
 require "vldt/not_positive"
-require "vldt/negative"
 require "vldt/not_negative"
 
 require "vldt/string"
