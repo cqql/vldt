@@ -6,9 +6,9 @@ module Vldt
       @validations = validations
     end
 
-    def validate (object)
+    def call (object)
       @validations.each do |v|
-        errors = v.validate(object)
+        errors = v.call(object)
 
         if errors
           return errors

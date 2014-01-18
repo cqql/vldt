@@ -5,14 +5,14 @@ module Vldt
       @validation = validation
     end
 
-    def validate (object)
+    def call (object)
       if !object.is_a?(::Array)
         { [] => [[:array, {}]] }
       else
         errors = {}
 
         object.each_with_index do |v, i|
-          e = @validation.validate(v)
+          e = @validation.call(v)
 
           if e
             e.map do |selector, error|

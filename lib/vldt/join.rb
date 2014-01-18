@@ -5,8 +5,8 @@ module Vldt
       @validations = validations
     end
 
-    def validate (object)
-      errors = @validations.map { |v| v.validate(object) }
+    def call (object)
+      errors = @validations.map { |v| v.call(object) }
 
       if errors.any?
         errors.compact.inject(Hash.new([])) do |es, e|

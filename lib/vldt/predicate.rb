@@ -9,7 +9,7 @@ module Vldt
   # Example
   #
   #   v = Vldt::Precidate.new(:equals, value: 5) { |o| o == 5 }
-  #   v.validate(6)
+  #   v.call(6)
   #   #=> { [] => [[:equals, { value: 5 }]] }
   class Predicate < Validation
     def initialize (name, params = {}, &block)
@@ -18,7 +18,7 @@ module Vldt
       @block = block
     end
 
-    def validate (object)
+    def call (object)
       if !@block.call(object)
         { [] => [[@name, @params]] }
       end

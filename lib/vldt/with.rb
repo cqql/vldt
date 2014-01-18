@@ -13,7 +13,7 @@ module Vldt
       @validation = validation
     end
 
-    def validate (object)
+    def call (object)
 
     end
   end

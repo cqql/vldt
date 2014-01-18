@@ -8,12 +8,12 @@ module Vldt
       @present = Vldt::Common.present
     end
 
-    def validate (object)
+    def call (object)
       value = object.fetch(@attribute, nil)
-      errors = @present.validate(value)
+      errors = @present.call(value)
 
       if !errors
-        errors = @validation.validate(value)
+        errors = @validation.call(value)
       end
 
       if errors

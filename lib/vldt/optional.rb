@@ -5,9 +5,9 @@ module Vldt
       @validation = validation
     end
 
-    def validate (object)
+    def call (object)
       if !object.nil?
-        errors = @validation.validate(object)
+        errors = @validation.call(object)
 
         if errors
           errors

@@ -1,7 +1,6 @@
 module Vldt
-  # Base class of all validations.
   class Validation
-    # Validate object.
+    # Validate the object.
     #
     # It should return nil, if object is valid and a hash with the
     # errors otherwise. The hash keys should be selectors of the
@@ -19,7 +18,7 @@ module Vldt
     # of 5 is larger than 6, should, for example, return
     #
     #   { [:array, 2] => [[:greather_than, { min: 6 }]] }
-    def validate (object)
+    def call (object)
 
     end
   end
