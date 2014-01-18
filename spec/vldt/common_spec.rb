@@ -59,4 +59,16 @@ describe Vldt::Common do
       expect(v.validate(String.new(value))).to eq({ [] => [[:identical, { value: value }]] })
     end
   end
+
+  describe "#is_a" do
+    let(:v) { Vldt::Common.is_a(String) }
+
+    it "should succeed if object is of the given class" do
+      expect(v.validate("string")).to eq nil
+    end
+
+    it "should fail if object is not of the given class" do
+      expect(v.validate(1)).to eq({ [] => [[:is_a, { class: String }]] })
+    end
+  end
 end

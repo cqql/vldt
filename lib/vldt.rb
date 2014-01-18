@@ -11,7 +11,6 @@ require "vldt/with"
 require "vldt/validate"
 
 require "vldt/predicate"
-require "vldt/is_a"
 require "vldt/one_of"
 require "vldt/none_of"
 

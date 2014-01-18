@@ -49,8 +49,9 @@ module Vldt
       Predicate.new(:identical, value: value) { |o| value.equal?(o) }
     end
 
+    # Validate, that an object is an instance of a class.
     def is_a (klass)
-      Vldt::IsA.new(klass)
+      Predicate.new(:is_a, class: klass) { |o| o.is_a?(klass) }
     end
 
     def one_of (*collection)
