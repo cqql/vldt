@@ -24,8 +24,9 @@ module Vldt
       Vldt::Each.new(*validations)
     end
 
+    # Validate, that an object is nil.
     def absent
-      Vldt::Absent.new
+      Predicate.new(:absent, &:nil?)
     end
 
     def present
