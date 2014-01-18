@@ -1,5 +1,5 @@
 describe Vldt::Chain do
-  let(:validation) { Vldt::Chain.new(Vldt::Present.new, Vldt::Match.new(/ab/)) }
+  let(:validation) { Vldt::Chain.new(Vldt::Present.new, Vldt::String.match(/ab/)) }
 
   context "if the object is invalid" do
     it "should fail with the first error" do

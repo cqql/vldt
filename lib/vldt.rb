@@ -22,7 +22,6 @@ require "vldt/none_of"
 require "vldt/number"
 
 require "vldt/string"
-require "vldt/match"
 
 require "vldt/array"
 require "vldt/each"
