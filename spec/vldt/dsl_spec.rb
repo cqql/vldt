@@ -21,7 +21,7 @@ describe Vldt::DSL do
         validate(:user, user),
         validate(:title, Vldt::String.string),
         validate(:ingredients, chain(
-          array,
+          Vldt::Array.array,
           join(
             length_greater_than(2),
             each(ingredient)))))

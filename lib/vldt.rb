@@ -4,6 +4,7 @@ require "vldt/validation"
 
 require "vldt/join"
 require "vldt/chain"
+require "vldt/each"
 require "vldt/optional"
 require "vldt/with"
 
@@ -24,7 +25,6 @@ require "vldt/number"
 require "vldt/string"
 
 require "vldt/array"
-require "vldt/each"
 
 require "vldt/length"
 require "vldt/length_greater_than"
@@ -34,7 +34,6 @@ require "vldt/length_between"
 require "vldt/dsl/composition"
 require "vldt/dsl/walk"
 require "vldt/dsl/basic"
-require "vldt/dsl/array"
 require "vldt/dsl/length"
 require "vldt/dsl"
 
