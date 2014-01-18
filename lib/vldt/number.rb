@@ -10,8 +10,9 @@ module Vldt
       Vldt::GreaterThan.new(value)
     end
 
-    def self.greater_than_or_equal_to (value)
-      Vldt::GreaterThanOrEqualTo.new(value)
+    # Validates that the number is greater than or equal to a minimum.
+    def self.greater_than_or_equal_to (min)
+      Predicate.new(:greater_than_or_equal_to, { min: min }) { |o| o >= min }
     end
 
     # Validate that a number is less than a maximum.
@@ -19,9 +20,9 @@ module Vldt
       Predicate.new(:less_than, { max: max }) { |o| o < max }
     end
 
-    # Validates that a number is less than or equal to a given one.
-    def self.less_than_or_equal_to (value)
-      Predicate.new(:less_than_or_equal_to, { value: value }) { |o| o <= value }
+    # Validates that a number is less than or equal to a maximum.
+    def self.less_than_or_equal_to (max)
+      Predicate.new(:less_than_or_equal_to, { max: max }) { |o| o <= value }
     end
 
     # Validates that a number is in a given range, boundaries included.

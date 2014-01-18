@@ -1,4 +1,16 @@
 describe Vldt::Number do
+  describe "#greater_than_or_equal_to" do
+    let(:v) { Vldt::Number.greater_than_or_equal_to(5) }
+
+    it "should fail if the number is less than the minimum" do
+      expect(v.validate(-1)).to eq({ [] => [[:greater_than_or_equal_to, { min: 5 }]] })
+    end
+
+    it "should succeed if the number is greater than the minimum" do
+      expect(v.validate(11)).to eq nil
+    end
+  end
+
   describe "#less_than" do
     let(:v) { Vldt::Number.less_than(6) }
 
@@ -14,11 +26,11 @@ describe Vldt::Number do
   describe "#less_than_or_equal_to" do
     let(:v) { Vldt::Number.less_than_or_equal_to(5) }
 
-    it "should fail if the number is greater than the given one" do
-      expect(v.validate(5.1)).to eq({ [] => [[:less_than_or_equal_to, { value: 5 }]] })
+    it "should fail if the number is greater than the maximum" do
+      expect(v.validate(5.1)).to eq({ [] => [[:less_than_or_equal_to, { max: 5 }]] })
     end
 
-    it "should succeed if the number is less than the given one" do
+    it "should succeed if the number is less than the maximum" do
       expect(v.validate(4.9)).to eq nil
     end
   end

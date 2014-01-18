@@ -21,7 +21,6 @@ require "vldt/none_of"
 
 require "vldt/number"
 require "vldt/greater_than"
-require "vldt/greater_than_or_equal_to"
 
 require "vldt/string"
 require "vldt/match"
