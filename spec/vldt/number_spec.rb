@@ -1,11 +1,29 @@
 describe Vldt::Number do
-  let(:validation) { Vldt::Number.number }
+  describe "#number" do
+    let(:v) { Vldt::Number.number }
 
-  it "should fail if the object is not numeric" do
-    expect(validation.validate([])).to eq({ [] => [[:number, {}]] })
+    it "should fail if the object is not numeric" do
+      expect(v.validate([])).to eq({ [] => [[:number, {}]] })
+    end
+
+    it "should succeed if the object is numeric" do
+      expect(v.validate(5.3)).to eq nil
+    end
   end
 
-  it "should succeed if the object is numeric" do
-    expect(validation.validate(5.3)).to eq nil
+  describe "#positive" do
+    let(:v) { Vldt::Number.positive }
+
+    it "should fail if the number is negative" do
+      expect(v.validate(-2.2)).to eq({ [] => [[:positive, {}]] })
+    end
+
+    it "should fail if the number is zero" do
+      expect(v.validate(0)).to eq({ [] => [[:positive, {}]] })
+    end
+
+    it "should succeed if the number is positive" do
+      expect(v.validate(2)).to eq nil
+    end
   end
 end

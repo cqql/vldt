@@ -38,8 +38,9 @@ module Vldt
       Vldt::Even.new
     end
 
+    # Validate that a number is positive (> 0).
     def self.positive
-      Vldt::Positive.new
+      Predicate.new(:positive, {}) { |o| o > 0 }
     end
 
     def self.not_positive
