@@ -71,4 +71,16 @@ describe Vldt::Common do
       expect(v.validate(1)).to eq({ [] => [[:is_a, { class: String }]] })
     end
   end
+
+  describe "#one_of" do
+    let(:v) { Vldt::Common.one_of(1, 3, 7) }
+
+    it "should succeed if object is listed" do
+      expect(v.validate(7)).to eq nil
+    end
+
+    it "should fail if object is not listed" do
+      expect(v.validate(8)).to eq({ [] => [[:one_of, { values: [1, 3, 7] }]] })
+    end
+  end
 end

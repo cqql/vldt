@@ -54,8 +54,9 @@ module Vldt
       Predicate.new(:is_a, class: klass) { |o| o.is_a?(klass) }
     end
 
-    def one_of (*collection)
-      Vldt::OneOf.new(*collection)
+    # Validates that object is included in a list of values.
+    def one_of (*values)
+      Predicate.new(:one_of, values: values) { |o| values.any? { |v| v == o } }
     end
 
     def none_of (*collection)
