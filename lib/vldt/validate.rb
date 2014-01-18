@@ -5,7 +5,7 @@ module Vldt
     def initialize (attribute, validation)
       @attribute = attribute
       @validation = validation
-      @present = Vldt::Present.new
+      @present = Vldt::Common.present
     end
 
     def validate (object)

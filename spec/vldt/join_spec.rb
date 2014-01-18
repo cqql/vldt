@@ -1,5 +1,5 @@
 describe Vldt::Join do
-  let(:validation) { Vldt::Join.new(Vldt::Present.new, Vldt::String.match(/ab/)) }
+  let(:validation) { Vldt::Join.new(Vldt::Common.present, Vldt::String.match(/ab/)) }
 
   context "if one of the joined validations fails" do
     it "should report the errors of all failed validations" do

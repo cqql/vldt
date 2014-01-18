@@ -29,8 +29,9 @@ module Vldt
       Predicate.new(:absent, &:nil?)
     end
 
+    # Validate, that an object is not nil.
     def present
-      Vldt::Present.new
+      Predicate.new(:present) { |o| !o.nil? }
     end
 
     def equal (value)
