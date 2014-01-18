@@ -1,7 +1,7 @@
 module Vldt
   # Function for number validation.
   module Number
-    # Validate, that object is a number
+    # Validate, that object is a number.
     def self.number
       Predicate.new(:number, {}) { |o| o.is_a?(Numeric) }
     end
@@ -23,7 +23,7 @@ module Vldt
 
     # Validates that a number is less than or equal to a maximum.
     def self.less_than_or_equal_to (max)
-      Predicate.new(:less_than_or_equal_to, { max: max }) { |o| o <= value }
+      Predicate.new(:less_than_or_equal_to, { max: max }) { |o| o <= max }
     end
 
     # Validates that a number is in a given range, boundaries included.
