@@ -44,8 +44,9 @@ module Vldt
       Predicate.new(:eqls, value: value) { |o| value.eql?(o) }
     end
 
+    # Validates that object and value are identical (`equal?`).
     def identical (value)
-      Vldt::Identical.new(value)
+      Predicate.new(:identical, value: value) { |o| value.equal?(o) }
     end
 
     def is_a (klass)

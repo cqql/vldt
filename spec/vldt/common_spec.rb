@@ -46,4 +46,17 @@ describe Vldt::Common do
       expect(v.validate(1)).to eq({ [] => [[:eqls, { value: 1.0 }]] })
     end
   end
+
+  describe "#identical" do
+    let(:value) { "a" }
+    let(:v) { Vldt::Common.identical(value) }
+
+    it "should succeed if object and value are idential" do
+      expect(v.validate(value)).to eq nil
+    end
+
+    it "should fail if object and value are not identical" do
+      expect(v.validate(String.new(value))).to eq({ [] => [[:identical, { value: value }]] })
+    end
+  end
 end
