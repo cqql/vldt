@@ -27,7 +27,6 @@ require "vldt/less_than_or_equal_to"
 require "vldt/between"
 require "vldt/whole_number"
 require "vldt/odd"
-require "vldt/even"
 
 require "vldt/string"
 require "vldt/match"

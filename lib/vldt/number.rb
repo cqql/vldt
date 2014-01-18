@@ -34,16 +34,17 @@ module Vldt
       Vldt::Odd.new
     end
 
+    # Validate, that a number is even.
     def self.even
-      Vldt::Even.new
+      Predicate.new(:even, {}, &:even?)
     end
 
-    # Validate that a number is positive (> 0).
+    # Validate, that a number is positive (> 0).
     def self.positive
       Predicate.new(:positive, {}) { |o| o > 0 }
     end
 
-    # Validate that a number is not positive (<= 0).
+    # Validate, that a number is not positive (<= 0).
     def self.not_positive
       Predicate.new(:not_positive, {}) { |o| o <= 0 }
     end

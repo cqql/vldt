@@ -74,4 +74,16 @@ describe Vldt::Number do
       expect(v.validate(2)).to eq nil
     end
   end
+
+  describe "#even" do
+    let(:v) { Vldt::Number.even }
+
+    it "should fail if the number is not even" do
+      expect(v.validate(-3)).to eq({ [] => [[:even, {}]] })
+    end
+
+    it "should succeed if the number is even" do
+      expect(v.validate(4)).to eq nil
+    end
+  end
 end
