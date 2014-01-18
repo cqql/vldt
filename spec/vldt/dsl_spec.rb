@@ -6,13 +6,13 @@ describe Vldt::DSL do
       join(
         validate(:name, chain(string, length_greater_than(6))),
         validate(:email, string),
-        validate(:age, join(whole_number, positive)))
+        validate(:age, join(Vldt::Number.integer, Vldt::Number.positive)))
     end
 
     def self.ingredient
       join(
         validate(:name, chain(string, one_of("Rice", "Tomato", "Potato"))),
-        validate(:amount, positive),
+        validate(:amount, Vldt::Number.positive),
         validate(:unit, chain(string, length_between(3, 10))))
     end
 
@@ -31,7 +31,7 @@ describe Vldt::DSL do
   it "should validate a user" do
     expect(v.user.validate({ name: "cqql#", email: "1@3", age: -3.3 })).to eq({
       [:name] => [[:length_greater_than, { min: 6 }]],
-      [:age] => [[:whole_number, {}], [:positive, {}]]
+      [:age] => [[:integer, {}], [:positive, {}]]
     })
   end
 

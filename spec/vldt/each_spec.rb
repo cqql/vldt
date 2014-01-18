@@ -1,5 +1,5 @@
 describe Vldt::Each do
-  let(:validation) { Vldt::Each.new(Vldt::GreaterThan.new(3)) }
+  let(:validation) { Vldt::Each.new(Vldt::Number.greater_than(3)) }
 
   it "should fail if the object is not enumerable" do
     expect(validation.validate(5)).to eq({ [] => [[:array, {}]]})
