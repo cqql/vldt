@@ -26,15 +26,9 @@ require "vldt/string"
 
 require "vldt/array"
 
-require "vldt/length"
-require "vldt/length_greater_than"
-require "vldt/length_less_than"
-require "vldt/length_between"
-
 require "vldt/dsl/composition"
 require "vldt/dsl/walk"
 require "vldt/dsl/basic"
-require "vldt/dsl/length"
 require "vldt/dsl"
 
 module Vldt

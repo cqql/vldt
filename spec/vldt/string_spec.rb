@@ -22,4 +22,56 @@ describe Vldt::String do
       expect(v.validate("cool")).to eq({ [] => [[:match, { pattern: /qq/ }]] })
     end
   end
+
+  describe "#length" do
+    let(:v) { Vldt::String.length(2) }
+
+    it "should fail if the string is not of the required length" do
+      expect(v.validate([])).to eq({ [] => [[:length, { value: 2 }]]})
+    end
+
+    it "should succeed if the string is of the required length" do
+      expect(v.validate([1, 5])).to eq nil
+    end
+  end
+
+  describe "#length_between" do
+    let(:v) { Vldt::String.length_between(2, 5) }
+
+    it "should fail if the length is greater than the maximum" do
+      expect(v.validate((1..10).to_a)).to eq({ [] => [[:length_between, { min: 2, max: 5 }]] })
+    end
+
+    it "should fail if the length is less than the minimum" do
+      expect(v.validate([1])).to eq({ [] => [[:length_between, { min: 2, max: 5 }]] })
+    end
+
+    it "should succeed if the length is in the required range" do
+      expect(v.validate("abc")).to eq nil
+    end
+  end
+
+  describe "#length_greater_than" do
+    let(:v) { Vldt::String.length_greater_than(2) }
+
+    it "should fail if the string is of less than the required length" do
+      expect(v.validate("hi")).to eq({ [] => [[:length_greater_than, { min: 2 }]] })
+    end
+
+    it "should succeed if the string is of greater than the required length" do
+      expect(v.validate([0, 3, 4])).to eq nil
+    end
+  end
+
+  describe "#length_less_than" do
+    let(:v) { Vldt::String.length_less_than(2) }
+
+    it "should fail if the object is of greater than the required length" do
+      expect(v.validate([true, false])).to eq({ [] => [[:length_less_than, { max: 2 }]] })
+    end
+
+    it "should succeed if the object is of less than the required length" do
+      expect(v.validate("x")).to eq nil
+    end
+  end
 end

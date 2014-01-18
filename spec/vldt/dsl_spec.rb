@@ -2,28 +2,32 @@ describe Vldt::DSL do
   v = Class.new do
     extend Vldt::DSL
 
+    S = Vldt::String
+    A = Vldt::Array
+    N = Vldt::Number
+
     def self.user
       join(
-        validate(:name, chain(Vldt::String.string, length_greater_than(6))),
-        validate(:email, Vldt::String.string),
-        validate(:age, join(Vldt::Number.integer, Vldt::Number.positive)))
+        validate(:name, chain(S.string, S.length_greater_than(6))),
+        validate(:email, S.string),
+        validate(:age, join(N.integer, N.positive)))
     end
 
     def self.ingredient
       join(
-        validate(:name, chain(Vldt::String.string, one_of("Rice", "Tomato", "Potato"))),
-        validate(:amount, Vldt::Number.positive),
-        validate(:unit, chain(Vldt::String.string, length_between(3, 10))))
+        validate(:name, chain(S.string, one_of("Rice", "Tomato", "Potato"))),
+        validate(:amount, N.positive),
+        validate(:unit, chain(S.string, S.length_between(3, 10))))
     end
 
     def self.recipe
       join(
         validate(:user, user),
-        validate(:title, Vldt::String.string),
+        validate(:title, S.string),
         validate(:ingredients, chain(
-          Vldt::Array.array,
+          A.array,
           join(
-            length_greater_than(2),
+            A.length_greater_than(2),
             each(ingredient)))))
     end
   end
@@ -58,7 +62,7 @@ describe Vldt::DSL do
     expect(v.recipe.validate(recipe)).to eq({
       [:user, :email] => [[:present, {}]],
       [:title] => [[:string, {}]],
-      [:ingredients] => [[:length_greater_than, { min: 2 }]],
+      [:ingredients] => [[:array_length_greater_than, { min: 2 }]],
       [:ingredients, 0, :unit] => [[:present, {}]],
       [:ingredients, 1, :name] => [[:one_of, { values: ["Rice", "Tomato", "Potato"] }]]
     })
