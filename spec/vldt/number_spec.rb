@@ -1,5 +1,5 @@
 describe Vldt::Number do
-  let(:validation) { Vldt::Number.new }
+  let(:validation) { Vldt::Number.number }
 
   it "should fail if the object is not numeric" do
     expect(validation.validate([])).to eq({ [] => [[:number, {}]] })
