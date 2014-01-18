@@ -34,4 +34,16 @@ describe Vldt::Common do
       expect(v.validate(11)).to eq({ [] => [[:equals, { value: 10 }]] })
     end
   end
+
+  describe "#eql" do
+    let(:v) { Vldt::Common.eql(1.0) }
+
+    it "should succeed if the object eqls the value" do
+      expect(v.validate(1.0)).to eq nil
+    end
+
+    it "should fail if the object does not eql the value" do
+      expect(v.validate(1)).to eq({ [] => [[:eqls, { value: 1.0 }]] })
+    end
+  end
 end
