@@ -14,8 +14,9 @@ module Vldt
       Vldt::GreaterThanOrEqualTo.new(value)
     end
 
-    def self.less_than (value)
-      Vldt::LessThan.new(value)
+    # Validate that a number is less than a maximum.
+    def self.less_than (max)
+      Predicate.new(:less_than, { max: max }) { |o| o < max }
     end
 
     # Validates that a number is less than or equal to a given one.
