@@ -1,4 +1,16 @@
 describe Vldt::Number do
+  describe "#greater_than" do
+    let(:v) { Vldt::Number.greater_than(13) }
+
+    it "should fail if object is not greater than the minimum" do
+      expect(v.validate(5)).to eq({ [] => [[:greater_than, { min: 13 }]]})
+    end
+
+    it "should succeed if object is greater than the minimum" do
+      expect(v.validate(20)).to eq nil
+    end
+  end
+
   describe "#greater_than_or_equal_to" do
     let(:v) { Vldt::Number.greater_than_or_equal_to(5) }
 

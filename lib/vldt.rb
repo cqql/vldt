@@ -20,7 +20,6 @@ require "vldt/one_of"
 require "vldt/none_of"
 
 require "vldt/number"
-require "vldt/greater_than"
 
 require "vldt/string"
 require "vldt/match"

@@ -6,8 +6,9 @@ module Vldt
       Predicate.new(:number, {}) { |o| o.is_a?(Numeric) }
     end
 
-    def self.greater_than (value)
-      Vldt::GreaterThan.new(value)
+    # Validates that object is greater than a minimum.
+    def self.greater_than (min)
+      Predicate.new(:greater_than, { min: min }) { |o| o > min }
     end
 
     # Validates that the number is greater than or equal to a minimum.
