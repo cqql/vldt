@@ -59,8 +59,9 @@ module Vldt
       Predicate.new(:one_of, values: values) { |o| values.any? { |v| v == o } }
     end
 
-    def none_of (*collection)
-      Vldt::NoneOf.new(*collection)
+    # Validates that object is not included in a list of values.
+    def none_of (*values)
+      Predicate.new(:none_of, values: values) { |o| values.none? { |v| v == o } }
     end
 
     extend(self)

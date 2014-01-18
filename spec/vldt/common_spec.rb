@@ -83,4 +83,16 @@ describe Vldt::Common do
       expect(v.validate(8)).to eq({ [] => [[:one_of, { values: [1, 3, 7] }]] })
     end
   end
+
+  describe "#none_of" do
+    let(:v) { Vldt::Common.none_of("a", "c", "z") }
+
+    it "should succeed if object is not listed" do
+      expect(v.validate("b")).to eq nil
+    end
+
+    it "should fail if object is listed" do
+      expect(v.validate("a")).to eq({ [] => [[:none_of, { values: ["a", "c", "z"] }]] })
+    end
+  end
 end
