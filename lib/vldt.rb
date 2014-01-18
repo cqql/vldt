@@ -11,7 +11,6 @@ require "vldt/with"
 require "vldt/validate"
 
 require "vldt/predicate"
-require "vldt/equal"
 require "vldt/eql"
 require "vldt/identical"
 require "vldt/is_a"

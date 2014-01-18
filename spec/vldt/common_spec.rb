@@ -22,4 +22,16 @@ describe Vldt::Common do
       expect(v.validate(nil)).to eq({ [] => [[:present, {}]] })
     end
   end
+
+  describe "#equal" do
+    let(:v) { Vldt::Common.equal(10) }
+
+    it "should succeed if the object equals the configured value" do
+      expect(v.validate(10)).to eq nil
+    end
+
+    it "should fail if the object is not equal" do
+      expect(v.validate(11)).to eq({ [] => [[:equals, { value: 10 }]] })
+    end
+  end
 end

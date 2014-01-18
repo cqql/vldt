@@ -34,8 +34,9 @@ module Vldt
       Predicate.new(:present) { |o| !o.nil? }
     end
 
+    # Validate the equality (`==`) of the object with a value.
     def equal (value)
-      Vldt::Equal.new(value)
+      Predicate.new(:equals, value: value) { |o| o == value }
     end
 
     def eql (value)
