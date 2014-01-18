@@ -75,6 +75,18 @@ describe Vldt::Number do
     end
   end
 
+  describe "#odd" do
+    let(:validation) { Vldt::Number.odd }
+
+    it "should fail if the number is not odd" do
+      expect(validation.validate(6)).to eq({ [] => [[:odd, {}]] })
+    end
+
+    it "should succeed if the number is odd" do
+      expect(validation.validate(5)).to eq nil
+    end
+  end
+
   describe "#even" do
     let(:v) { Vldt::Number.even }
 

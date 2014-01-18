@@ -30,8 +30,9 @@ module Vldt
       Vldt::WholeNumber.new
     end
 
+    # Validate, that a number is odd.
     def self.odd
-      Vldt::Odd.new
+      Predicate.new(:odd, {}, &:odd?)
     end
 
     # Validate, that a number is even.
