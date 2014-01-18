@@ -20,16 +20,10 @@ require "vldt/is_a"
 require "vldt/one_of"
 require "vldt/none_of"
 
+require "vldt/common"
 require "vldt/number"
-
 require "vldt/string"
-
 require "vldt/array"
-
-require "vldt/dsl/composition"
-require "vldt/dsl/walk"
-require "vldt/dsl/basic"
-require "vldt/dsl"
 
 module Vldt
 

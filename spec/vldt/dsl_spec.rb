@@ -1,6 +1,6 @@
-describe Vldt::DSL do
+describe Vldt::Common do
   v = Class.new do
-    extend Vldt::DSL
+    extend Vldt::Common
 
     S = Vldt::String
     A = Vldt::Array
