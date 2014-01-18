@@ -26,8 +26,9 @@ module Vldt
       Vldt::Between.new(min, max)
     end
 
-    def self.whole_number
-      Vldt::WholeNumber.new
+    # Validate, that object is an integer.
+    def self.integer
+      Predicate.new(:integer, {}) { |o| o.is_a?(Integer) }
     end
 
     # Validate, that a number is odd.

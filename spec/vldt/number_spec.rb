@@ -1,4 +1,40 @@
 describe Vldt::Number do
+  describe "#integer" do
+    let(:v) { Vldt::Number.integer }
+
+    it "should fail if the number is not integral" do
+      expect(v.validate(1.1)).to eq({ [] => [[:integer, {}]] })
+    end
+
+    it "should succeed if the number is integral" do
+      expect(v.validate(4)).to eq nil
+    end
+  end
+
+  describe "#odd" do
+    let(:validation) { Vldt::Number.odd }
+
+    it "should fail if the number is not odd" do
+      expect(validation.validate(6)).to eq({ [] => [[:odd, {}]] })
+    end
+
+    it "should succeed if the number is odd" do
+      expect(validation.validate(5)).to eq nil
+    end
+  end
+
+  describe "#even" do
+    let(:v) { Vldt::Number.even }
+
+    it "should fail if the number is not even" do
+      expect(v.validate(-3)).to eq({ [] => [[:even, {}]] })
+    end
+
+    it "should succeed if the number is even" do
+      expect(v.validate(4)).to eq nil
+    end
+  end
+
   describe "#number" do
     let(:v) { Vldt::Number.number }
 
@@ -72,30 +108,6 @@ describe Vldt::Number do
 
     it "should succeed if the number is positive" do
       expect(v.validate(2)).to eq nil
-    end
-  end
-
-  describe "#odd" do
-    let(:validation) { Vldt::Number.odd }
-
-    it "should fail if the number is not odd" do
-      expect(validation.validate(6)).to eq({ [] => [[:odd, {}]] })
-    end
-
-    it "should succeed if the number is odd" do
-      expect(validation.validate(5)).to eq nil
-    end
-  end
-
-  describe "#even" do
-    let(:v) { Vldt::Number.even }
-
-    it "should fail if the number is not even" do
-      expect(v.validate(-3)).to eq({ [] => [[:even, {}]] })
-    end
-
-    it "should succeed if the number is even" do
-      expect(v.validate(4)).to eq nil
     end
   end
 end
