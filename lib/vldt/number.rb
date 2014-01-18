@@ -22,8 +22,9 @@ module Vldt
       Vldt::LessThanOrEqualTo.new(value)
     end
 
+    # Validates that a number is in a given range, boundaries included.
     def self.between (min, max)
-      Vldt::Between.new(min, max)
+      Predicate.new(:between, { min: min, max: max }) { |o| o >= min && o <= max }
     end
 
     # Validate, that object is an integer.
