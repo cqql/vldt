@@ -18,8 +18,9 @@ module Vldt
       Vldt::LessThan.new(value)
     end
 
+    # Validates that a number is less than or equal to a given one.
     def self.less_than_or_equal_to (value)
-      Vldt::LessThanOrEqualTo.new(value)
+      Predicate.new(:less_than_or_equal_to, { value: value }) { |o| o <= value }
     end
 
     # Validates that a number is in a given range, boundaries included.

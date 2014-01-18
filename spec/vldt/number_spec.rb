@@ -1,4 +1,16 @@
 describe Vldt::Number do
+  describe "#less_than_or_equal_to" do
+    let(:v) { Vldt::Number.less_than_or_equal_to(5) }
+
+    it "should fail if the number is greater than the given one" do
+      expect(v.validate(5.1)).to eq({ [] => [[:less_than_or_equal_to, { value: 5 }]] })
+    end
+
+    it "should succeed if the number is less than the given one" do
+      expect(v.validate(4.9)).to eq nil
+    end
+  end
+
   describe "#between" do
     let(:v) { Vldt::Number.between(-2, 5) }
 
