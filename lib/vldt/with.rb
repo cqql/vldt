@@ -14,7 +14,7 @@ module Vldt
     end
 
     def call (object)
-
+      @validation.call(@block.call(object))
     end
   end
 end
