@@ -16,6 +16,7 @@ require "vldt/number"
 require "vldt/string"
 require "vldt/array"
 require "vldt/date"
+require "vldt/json"
 
 module Vldt
 
