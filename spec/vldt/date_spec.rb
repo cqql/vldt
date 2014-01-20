@@ -1,4 +1,16 @@
 describe Vldt::Date do
+  describe "#date" do
+    let(:v) { Vldt::Date.date }
+
+    it "should fail if the object cannot be parsed as a Date" do
+      expect(v.call("not_a_date")).to eq({ [] => [[:date, {}]] })
+    end
+
+    it "should succeed if the object can be parsed as a Date" do
+      expect(v.call("20140120")).to eq nil
+    end
+  end
+
   describe "#iso8601_date" do
     let(:v) { Vldt::Date.iso8601_date }
 

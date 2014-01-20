@@ -21,5 +21,9 @@ describe Vldt::JSON do
     it "should forward errors" do
       expect(v.call("{ \"key\": 3 }")).to eq({ ["key"] => [[:equals, { value: 1 }]] })
     end
+
+    it "should validate the object's parseability before doing so" do
+      expect(v.call("1;w")).to eq({ [] => [[:json, {}]] })
+    end
   end
 end

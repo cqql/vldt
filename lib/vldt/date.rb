@@ -2,11 +2,11 @@ require "date"
 
 module Vldt
   module Date
-    # Validate, that an object is an ISO8601 date.
-    def iso8601_date
-      Predicate.new(:iso8601_date, {}) do |o|
+    # Validate, that an object can be parsed as a date.
+    def date
+      Predicate.new(:date) do |o|
         begin
-          ::Date.strptime(o, "%Y-%m-%d")
+          ::Date.parse(o)
 
           true
         rescue TypeError, ArgumentError
