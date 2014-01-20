@@ -1,5 +1,5 @@
 describe Vldt::Optional do
-  let(:v) { Vldt::Optional.new(Vldt::Common.equal(10)) }
+  let(:v) { Vldt::Optional.new(Vldt::Common.equals(10)) }
 
   it "should succeed if the object is nil" do
     expect(v.call(nil)).to eq nil

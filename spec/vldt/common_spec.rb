@@ -24,7 +24,7 @@ describe Vldt::Common do
   end
 
   describe "#equal" do
-    let(:v) { Vldt::Common.equal(10) }
+    let(:v) { Vldt::Common.equals(10) }
 
     it "should succeed if the object equals the configured value" do
       expect(v.call(10)).to eq nil
@@ -36,7 +36,7 @@ describe Vldt::Common do
   end
 
   describe "#eql" do
-    let(:v) { Vldt::Common.eql(1.0) }
+    let(:v) { Vldt::Common.eqls(1.0) }
 
     it "should succeed if the object eqls the value" do
       expect(v.call(1.0)).to eq nil

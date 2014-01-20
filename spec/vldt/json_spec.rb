@@ -12,7 +12,7 @@ describe Vldt::JSON do
   end
 
   describe "#with_json" do
-    let(:v) { Vldt::JSON.with_json(Vldt::Common.validate("key", Vldt::Common.equal(1))) }
+    let(:v) { Vldt::JSON.with_json(Vldt::Common.validate("key", Vldt::Common.equals(1))) }
 
     it "should parse the object as a JSON string" do
       expect(v.call("{ \"key\": 1 }")).to eq nil

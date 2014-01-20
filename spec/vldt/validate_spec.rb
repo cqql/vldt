@@ -1,5 +1,5 @@
 describe Vldt::Validate do
-  let(:v) { Vldt::Validate.new(:key, Vldt::Common.equal(5)) }
+  let(:v) { Vldt::Validate.new(:key, Vldt::Common.equals(5)) }
 
   it "should fail if the attribute does not exist" do
     expect(v.call({ other: 5 })).to eq({ [:key] => [[:present, {}]] })
