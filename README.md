@@ -26,28 +26,39 @@ car = {
 ```
 
 ```ruby
-class CarValidation
-  include Vldt::DSL
+module CarValidation
+  extend Vldt::Common
+  S = Vldt::String
+  N = Vldt::Number
+  A = Vldt::Array
 
-  def car
+  def self.car
     join(
       validate(:driver, person),
-      validate(:passengers, each(person)),
-      validate(:tires, each(tire)))
+      validate(:passengers, chain(
+        A.array,
+        join(
+          A.length_between(0, 3),
+          each(person)))),
+      validate(:tires, chain(
+        A.array,
+        join(
+          A.length(4),
+          each(tire)))))
   end
 
-  def person
+  def self.person
     join(
       validate(:name, chain(
-        string,
-        length_between(4, 10))),
+        S.string,
+        S.length_between(4, 10))),
       validate(:age, chain(
-        number,
-        whole_number,
-        positive)))
+        N.number,
+        N.integer,
+        N.positive)))
   end
 
-  def tire
+  def self.tire
     join(
       validate(:condition, one_of("good", "bad")),
       validate(:used_since, chain(
