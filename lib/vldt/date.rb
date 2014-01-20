@@ -39,7 +39,9 @@ module Vldt
 
     # Validate an object after parsing it as a {::Date}.
     def with_date (validation)
-      With.new(-> d { ::Date.parse(d) }, validation)
+      Common.chain(
+        date,
+        With.new(-> d { ::Date.parse(d) }, validation))
     end
 
     extend(self)

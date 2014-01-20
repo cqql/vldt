@@ -65,5 +65,9 @@ describe Vldt::Date do
     it "should forward errors" do
       expect(v.call("19950101")).to eq({ [] => [[:date_after, date: Date.new(2008, 3, 2)]] })
     end
+
+    it "should check that the object is parseable" do
+      expect(v.call("jl222113")).to eq({ [] => [[:date, {}]] })
+    end
   end
 end
