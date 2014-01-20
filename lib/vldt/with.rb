@@ -8,7 +8,7 @@ module Vldt
   #
   # @example
   #   # Validation to check, if a date string equals a date object
-  #   with = Vldt::With.new(-> d { Date.parse(d) }, Vldt::Common.equals(Date.today))
+  #   with = Vldt::With.new(-> d { Date.parse(d) }, Vldt::Common.equal(Date.today))
   class With < Validation
     def initialize (block, validation)
       @block = block

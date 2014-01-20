@@ -15,6 +15,10 @@ module Vldt
       end
     end
 
+    def with_json (validation)
+      With.new(-> json { ::JSON.parse(json) }, validation)
+    end
+
     extend(self)
   end
 end
