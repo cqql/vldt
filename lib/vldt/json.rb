@@ -3,7 +3,7 @@ require "json"
 module Vldt
   # JSON validations
   module JSON
-    def self.json
+    def json
       Predicate.new(:json) do |o|
         begin
           ::JSON.parse(o)
@@ -14,5 +14,7 @@ module Vldt
         end
       end
     end
+
+    extend(self)
   end
 end
