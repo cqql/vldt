@@ -2,11 +2,13 @@ module Vldt
   # Validates the result of a function mapped over the object, instead
   # of the original object.
   #
-  # Example
+  # The {With} alone does not handle any errors. So you should combine
+  # it with other validations like {Common#present} to prevent
+  # nil-errors.
   #
-  #   # Validate that a string has 5 characters (yes, this example is
-  #   # super artificial)
-  #   with = Vldt::With.new(-> s { s.chars }, length(5))
+  # @example
+  #   # Validation to check, if a date string equals a date object
+  #   with = Vldt::With.new(-> d { Date.parse(d) }, Vldt::Common.equals(Date.today))
   class With < Validation
     def initialize (block, validation)
       @block = block

@@ -1,2 +1,5 @@
-# Bundle config
-/.bundle
+# Hidden files
+.*
+
+# Generated docs
+/doc

@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.4"
   spec.add_development_dependency "rake", "~> 10.1"
+  spec.add_development_dependency "yard"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "pry"
 end
