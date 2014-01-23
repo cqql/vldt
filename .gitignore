@@ -3,3 +3,6 @@
 
 # Generated docs
 /doc
+
+# Gemfile.lock
+/Gemfile.lock
