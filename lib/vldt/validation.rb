@@ -12,7 +12,7 @@ module Vldt
     #
     #   v = { array: [1, 3, 5] }
     #
-    # would be +[:array, 2]+, because +v.fetch(:array).fetch(2)+ is 5.
+    # would be `[:array, 2]`, because `v.fetch(:array).fetch(2)` is 5.
     #
     # So a validation, that validates, that the object at the position
     # of 5 is larger than 6, should, for example, return
@@ -20,8 +20,8 @@ module Vldt
     #   { [:array, 2] => [[:greather_than, { min: 6 }]] }
     #
     # @param [Object] object to be validated
-    # @return [nil] if +object+ is valid
-    # @return [{ [<Symbol, ::Number>] => [<[(Symbol, Hash{ Symbol => Object })]>] }] if there were errors
+    # @return [nil] if `object` is valid
+    # @return [{ <Symbol, ::Number> => <(Symbol, { Symbol => Object })> }] if there were errors
     def call (object)
 
     end

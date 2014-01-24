@@ -16,14 +16,14 @@ module Vldt
       end
     end
 
-    # Validate, that a date is after (+>=+) +date+.
+    # Validate, that a date is after (`>=`) `date`.
     def date_after (date)
       Predicate.new(:date_after, { date: date }) do |o|
         o >= date
       end
     end
 
-    # Validate, that a date is after (+<=+) +date+.
+    # Validate, that a date is after (`<=`) `date`.
     def date_before (date)
       Predicate.new(:date_before, { date: date }) do |o|
         o <= date
