@@ -3,11 +3,14 @@ module Vldt
   class Each < Validation
     def initialize (validation)
       @validation = validation
+      @array_validation = Vldt::Array.array
     end
 
     def call (object)
-      if !object.is_a?(::Array)
-        { [] => [[:array, {}]] }
+      errors = Vldt::Array.array.call(object)
+
+      if errors
+        errors
       else
         errors = {}
 

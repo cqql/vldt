@@ -3,7 +3,7 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.greater_than(13) }
 
     it "should fail if object is not greater than the minimum" do
-      expect(v.call(5)).to eq({ [] => [[:greater_than, { min: 13 }]]})
+      expect(v.call(5)).to eq({ [] => [{ type: :greater_than, params: { min: 13 } }]})
     end
 
     it "should succeed if object is greater than the minimum" do
@@ -15,7 +15,7 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.greater_than_or_equal_to(5) }
 
     it "should fail if the number is less than the minimum" do
-      expect(v.call(-1)).to eq({ [] => [[:greater_than_or_equal_to, { min: 5 }]] })
+      expect(v.call(-1)).to eq({ [] => [{ type: :greater_than_or_equal_to, params: { min: 5 } }] })
     end
 
     it "should succeed if the number is greater than the minimum" do
@@ -27,7 +27,7 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.less_than(6) }
 
     it "should fail if the number is not less than the maximum" do
-      expect(v.call(10)).to eq({ [] => [[:less_than, { max: 6 }]] })
+      expect(v.call(10)).to eq({ [] => [{ type: :less_than, params: { max: 6 } }] })
     end
 
     it "should succeed if the number is less than the maximum" do
@@ -39,7 +39,7 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.less_than_or_equal_to(5) }
 
     it "should fail if the number is greater than the maximum" do
-      expect(v.call(5.1)).to eq({ [] => [[:less_than_or_equal_to, { max: 5 }]] })
+      expect(v.call(5.1)).to eq({ [] => [{ type: :less_than_or_equal_to, params: { max: 5 } }] })
     end
 
     it "should succeed if the number is less than the maximum" do
@@ -51,7 +51,7 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.between(-2, 5) }
 
     it "should fail if the number is out of range" do
-      expect(v.call(-6)).to eq({ [] => [[:between, { min: -2, max: 5 }]] })
+      expect(v.call(-6)).to eq({ [] => [{ type: :between, params: { min: -2, max: 5 } }] })
     end
 
     it "should succeed if the number is in range" do
@@ -63,7 +63,7 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.integer }
 
     it "should fail if the number is not integral" do
-      expect(v.call(1.1)).to eq({ [] => [[:integer, {}]] })
+      expect(v.call(1.1)).to eq({ [] => [{ type: :integer, params: {} }] })
     end
 
     it "should succeed if the number is integral" do
@@ -75,7 +75,7 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.odd }
 
     it "should fail if the number is not odd" do
-      expect(v.call(6)).to eq({ [] => [[:odd, {}]] })
+      expect(v.call(6)).to eq({ [] => [{ type: :odd, params: {} }] })
     end
 
     it "should succeed if the number is odd" do
@@ -87,7 +87,7 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.even }
 
     it "should fail if the number is not even" do
-      expect(v.call(-3)).to eq({ [] => [[:even, {}]] })
+      expect(v.call(-3)).to eq({ [] => [{ type: :even, params: {} }] })
     end
 
     it "should succeed if the number is even" do
@@ -99,7 +99,7 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.number }
 
     it "should fail if the object is not numeric" do
-      expect(v.call([])).to eq({ [] => [[:number, {}]] })
+      expect(v.call([])).to eq({ [] => [{ type: :number, params: {} }] })
     end
 
     it "should succeed if the object is numeric" do
@@ -111,11 +111,11 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.positive }
 
     it "should fail if the number is negative" do
-      expect(v.call(-2.2)).to eq({ [] => [[:positive, {}]] })
+      expect(v.call(-2.2)).to eq({ [] => [{ type: :positive, params: {} }] })
     end
 
     it "should fail if the number is zero" do
-      expect(v.call(0)).to eq({ [] => [[:positive, {}]] })
+      expect(v.call(0)).to eq({ [] => [{ type: :positive, params: {} }] })
     end
 
     it "should succeed if the number is positive" do
@@ -127,7 +127,7 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.not_positive }
 
     it "should fail if the number is positive" do
-      expect(v.call(2.2)).to eq({ [] => [[:not_positive, {}]] })
+      expect(v.call(2.2)).to eq({ [] => [{ type: :not_positive, params: {} }] })
     end
 
     it "should succeed if the number is zero" do
@@ -143,11 +143,11 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.negative }
 
     it "should fail if the number is positive" do
-      expect(v.call(2.2)).to eq({ [] => [[:negative, {}]] })
+      expect(v.call(2.2)).to eq({ [] => [{ type: :negative, params: {} }] })
     end
 
     it "should fail if the number is zero" do
-      expect(v.call(0)).to eq({ [] => [[:negative, {}]] })
+      expect(v.call(0)).to eq({ [] => [{ type: :negative, params: {} }] })
     end
 
     it "should succeed if the number is negative" do
@@ -159,7 +159,7 @@ describe Vldt::Number do
     let(:v) { Vldt::Number.not_negative }
 
     it "should fail if the number is negative" do
-      expect(v.call(-2.2)).to eq({ [] => [[:not_negative, {}]] })
+      expect(v.call(-2.2)).to eq({ [] => [{ type: :not_negative, params: {} }] })
     end
 
     it "should succeed if the number is zero" do

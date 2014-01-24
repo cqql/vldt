@@ -7,7 +7,7 @@ describe Vldt::Common do
     end
 
     it "should fail if the object is not nil" do
-      expect(v.call(true)).to eq({ [] => [[:absent, {}]] })
+      expect(v.call(true)).to eq({ [] => [{ type: :absent, params: {} }] })
     end
   end
 
@@ -19,7 +19,7 @@ describe Vldt::Common do
     end
 
     it "should fail if the object is nil" do
-      expect(v.call(nil)).to eq({ [] => [[:present, {}]] })
+      expect(v.call(nil)).to eq({ [] => [{ type: :present, params: {} }] })
     end
   end
 
@@ -31,7 +31,7 @@ describe Vldt::Common do
     end
 
     it "should fail if the object is not equal" do
-      expect(v.call(11)).to eq({ [] => [[:equals, { value: 10 }]] })
+      expect(v.call(11)).to eq({ [] => [{ type: :equals, params: { value: 10 } }] })
     end
   end
 
@@ -43,7 +43,7 @@ describe Vldt::Common do
     end
 
     it "should fail if the object does not eql the value" do
-      expect(v.call(1)).to eq({ [] => [[:eqls, { value: 1.0 }]] })
+      expect(v.call(1)).to eq({ [] => [{ type: :eqls, params: { value: 1.0 } }] })
     end
   end
 
@@ -56,7 +56,7 @@ describe Vldt::Common do
     end
 
     it "should fail if object and value are not identical" do
-      expect(v.call(String.new(value))).to eq({ [] => [[:identical, { value: value }]] })
+      expect(v.call(String.new(value))).to eq({ [] => [{ type: :identical, params: { value: value } }] })
     end
   end
 
@@ -68,7 +68,7 @@ describe Vldt::Common do
     end
 
     it "should fail if object is not of the given class" do
-      expect(v.call(1)).to eq({ [] => [[:is_a, { class: String }]] })
+      expect(v.call(1)).to eq({ [] => [{ type: :is_a, params: { class: String } }] })
     end
   end
 
@@ -80,7 +80,7 @@ describe Vldt::Common do
     end
 
     it "should fail if object is not listed" do
-      expect(v.call(8)).to eq({ [] => [[:one_of, { values: [1, 3, 7] }]] })
+      expect(v.call(8)).to eq({ [] => [{ type: :one_of, params: { values: [1, 3, 7] } }] })
     end
   end
 
@@ -92,7 +92,7 @@ describe Vldt::Common do
     end
 
     it "should fail if object is listed" do
-      expect(v.call("a")).to eq({ [] => [[:none_of, { values: ["a", "c", "z"] }]] })
+      expect(v.call("a")).to eq({ [] => [{ type: :none_of, params: { values: ["a", "c", "z"] } }] })
     end
   end
 end

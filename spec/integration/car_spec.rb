@@ -61,13 +61,13 @@ describe "The car example" do
     }
 
     expect(Validations.car.call(car)).to eq({
-        [:driver, :name] => [[:present, {}]],
-        [:passengers, 0, :name] => [[:length_between, { min: 4, max: 10 }]],
-        [:tires, 0, :condition] => [[:one_of, { values: ["good", "bad"] }]],
-        [:tires, 1, :used_since] => [[:date_after, { date: Date.new(2013, 1, 6) }]],
-        [:tires, 2, :used_since] => [[:date, {}]],
-        [:tires, 3, :condition] => [[:present, {}]],
-        [:tires, 3, :used_since] => [[:present, {}]]
+        [:driver, :name] => [{ type: :present, params: {} }],
+        [:passengers, 0, :name] => [{ type: :length_between, params: { min: 4, max: 10 } }],
+        [:tires, 0, :condition] => [{ type: :one_of, params: { values: ["good", "bad"] } }],
+        [:tires, 1, :used_since] => [{ type: :date_after, params: { date: Date.new(2013, 1, 6) } }],
+        [:tires, 2, :used_since] => [{ type: :date, params: {} }],
+        [:tires, 3, :condition] => [{ type: :present, params: {} }],
+        [:tires, 3, :used_since] => [{ type: :present, params: {} }]
       })
   end
 end

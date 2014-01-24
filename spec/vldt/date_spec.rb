@@ -3,7 +3,7 @@ describe Vldt::Date do
     let(:v) { Vldt::Date.date }
 
     it "should fail if the object cannot be parsed as a Date" do
-      expect(v.call("not_a_date")).to eq({ [] => [[:date, {}]] })
+      expect(v.call("not_a_date")).to eq({ [] => [{ type: :date, params: {} }] })
     end
 
     it "should succeed if the object can be parsed as a Date" do
@@ -19,7 +19,7 @@ describe Vldt::Date do
     let(:v) { Vldt::Date.date_after(Date.new(2014, 1, 2)) }
 
     it "should fail if the date is before the given one" do
-      expect(v.call(Date.new(2013, 12, 12))).to eq ({ [] => [[:date_after, date: Date.new(2014, 1, 2)]] })
+      expect(v.call(Date.new(2013, 12, 12))).to eq ({ [] => [{ type: :date_after, params: { date: Date.new(2014, 1, 2) } }] })
     end
 
     it "should succeed if the date is after the given one" do
@@ -31,7 +31,7 @@ describe Vldt::Date do
     let(:v) { Vldt::Date.date_before(Date.new(2005, 1, 2)) }
 
     it "should fail if the date is after the given one" do
-      expect(v.call(Date.new(2013, 12, 12))).to eq ({ [] => [[:date_before, date: Date.new(2005, 1, 2)]] })
+      expect(v.call(Date.new(2013, 12, 12))).to eq ({ [] => [{ type: :date_before, params: { date: Date.new(2005, 1, 2) } }] })
     end
 
     it "should succeed if the date is before the given one" do
@@ -43,11 +43,11 @@ describe Vldt::Date do
     let(:v) { Vldt::Date.date_between(Date.new(2010, 1, 1), Date.new(2012, 6, 6)) }
 
     it "should fail if the date is before the minimum" do
-      expect(v.call(Date.new(2000, 1, 1))).to eq({ [] => [[:date_between, min: Date.new(2010, 1, 1), max: Date.new(2012, 6, 6)]] })
+      expect(v.call(Date.new(2000, 1, 1))).to eq({ [] => [{ type: :date_between, params: { min: Date.new(2010, 1, 1), max: Date.new(2012, 6, 6) } }] })
     end
 
     it "should fail if the date is after the maximum" do
-      expect(v.call(Date.new(2015, 1, 1))).to eq({ [] => [[:date_between, min: Date.new(2010, 1, 1), max: Date.new(2012, 6, 6)]] })
+      expect(v.call(Date.new(2015, 1, 1))).to eq({ [] => [{ type: :date_between, params: { min: Date.new(2010, 1, 1), max: Date.new(2012, 6, 6) } }] })
     end
 
     it "should succeed if the date is in the allowed range" do
@@ -63,11 +63,11 @@ describe Vldt::Date do
     end
 
     it "should forward errors" do
-      expect(v.call("19950101")).to eq({ [] => [[:date_after, date: Date.new(2008, 3, 2)]] })
+      expect(v.call("19950101")).to eq({ [] => [{ type: :date_after, params: { date: Date.new(2008, 3, 2) } }] })
     end
 
     it "should check that the object is parseable" do
-      expect(v.call("jl222113")).to eq({ [] => [[:date, {}]] })
+      expect(v.call("jl222113")).to eq({ [] => [{ type: :date, params: {} }] })
     end
   end
 end

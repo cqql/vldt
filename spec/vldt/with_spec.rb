@@ -6,7 +6,7 @@ describe Vldt::With do
   end
 
   it "should propagate a fail" do
-    expect(v.call("hi")).to eq({ [] => [[:array_length, { value: 4 }]]})
+    expect(v.call("hi")).to eq({ [] => [{ type: :array_length, params: { value: 4 } }]})
   end
 
   it "should not catch errors" do

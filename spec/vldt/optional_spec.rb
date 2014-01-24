@@ -10,6 +10,6 @@ describe Vldt::Optional do
   end
 
   it "should fail if object is not nil and the v fails" do
-    expect(v.call(5)).to eq({ [] => [[:equals, { value: 10 }]] })
+    expect(v.call(5)).to eq({ [] => [{ type: :equals, params: { value: 10 } }] })
   end
 end

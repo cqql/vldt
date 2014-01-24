@@ -21,7 +21,7 @@ module Vldt
     #
     # @param [Object] object to be validated
     # @return [nil] if `object` is valid
-    # @return [{ <Symbol, ::Number> => <(Symbol, { Symbol => Object })> }] if there were errors
+    # @return [{ <Symbol, ::Number> => { Symbol => Object } }] if there were errors
     def call (object)
 
     end

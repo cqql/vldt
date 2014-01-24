@@ -3,7 +3,7 @@ describe Vldt::Array do
     let(:v) { Vldt::Array.array }
 
     it "should fail if the object is not an array" do
-      expect(v.call("hi")).to eq({ [] => [[:array, {}]] })
+      expect(v.call("hi")).to eq({ [] => [{ type: :array, params: {} }] })
     end
 
     it "should succeed if the object is an array" do
@@ -15,7 +15,7 @@ describe Vldt::Array do
     let(:v) { Vldt::Array.length(2) }
 
     it "should fail if the array is not of the required length" do
-      expect(v.call([])).to eq({ [] => [[:array_length, { value: 2 }]]})
+      expect(v.call([])).to eq({ [] => [{ type: :array_length, params: { value: 2 } }]})
     end
 
     it "should succeed if the array is of the required length" do
@@ -27,11 +27,11 @@ describe Vldt::Array do
     let(:v) { Vldt::Array.length_between(2, 5) }
 
     it "should fail if the length is greater than the maximum" do
-      expect(v.call((1..10).to_a)).to eq({ [] => [[:array_length_between, { min: 2, max: 5 }]] })
+      expect(v.call((1..10).to_a)).to eq({ [] => [{ type: :array_length_between, params: { min: 2, max: 5 } }] })
     end
 
     it "should fail if the length is less than the minimum" do
-      expect(v.call([1])).to eq({ [] => [[:array_length_between, { min: 2, max: 5 }]] })
+      expect(v.call([1])).to eq({ [] => [{ type: :array_length_between, params: { min: 2, max: 5 } }] })
     end
 
     it "should succeed if the length is in the required range" do
@@ -43,7 +43,7 @@ describe Vldt::Array do
     let(:v) { Vldt::Array.length_greater_than(2) }
 
     it "should fail if the array is of less than the required length" do
-      expect(v.call("hi")).to eq({ [] => [[:array_length_greater_than, { min: 2 }]] })
+      expect(v.call("hi")).to eq({ [] => [{ type: :array_length_greater_than, params: { min: 2 } }] })
     end
 
     it "should succeed if the array is of greater than the required length" do
@@ -55,7 +55,7 @@ describe Vldt::Array do
     let(:v) { Vldt::Array.length_less_than(2) }
 
     it "should fail if the object is of greater than the required length" do
-      expect(v.call([true, false])).to eq({ [] => [[:array_length_less_than, { max: 2 }]] })
+      expect(v.call([true, false])).to eq({ [] => [{ type: :array_length_less_than, params: { max: 2 } }] })
     end
 
     it "should succeed if the object is of less than the required length" do

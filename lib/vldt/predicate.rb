@@ -19,7 +19,7 @@ module Vldt
 
     def call (object)
       if !@block.call(object)
-        { [] => [[@name, @params]] }
+        { [] => [{ type: @name, params: @params }] }
       end
     end
   end

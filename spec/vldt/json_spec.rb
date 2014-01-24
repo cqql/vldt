@@ -3,7 +3,7 @@ describe Vldt::JSON do
     let(:v) { Vldt::JSON.json }
 
     it "should fail if the object is not a valid JSON string" do
-      expect(v.call("{ 's': }")).to eq({ [] => [[:json, {}]]})
+      expect(v.call("{ 's': }")).to eq({ [] => [{ type: :json, params: {} }]})
     end
 
     it "should succeed if the object is a JSON string" do
@@ -19,11 +19,11 @@ describe Vldt::JSON do
     end
 
     it "should forward errors" do
-      expect(v.call("{ \"key\": 3 }")).to eq({ ["key"] => [[:equals, { value: 1 }]] })
+      expect(v.call("{ \"key\": 3 }")).to eq({ ["key"] => [{ type: :equals, params: { value: 1 } }] })
     end
 
     it "should validate the object's parseability before doing so" do
-      expect(v.call("1;w")).to eq({ [] => [[:json, {}]] })
+      expect(v.call("1;w")).to eq({ [] => [{ type: :json, params: {} }] })
     end
   end
 end

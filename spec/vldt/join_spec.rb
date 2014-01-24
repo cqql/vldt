@@ -3,11 +3,11 @@ describe Vldt::Join do
 
   context "if one of the joined validations fails" do
     it "should report the errors of all failed validations" do
-      expect(v.call(nil)).to eq({ [] => [[:present, {}], [:match, { pattern: /ab/ }]] })
+      expect(v.call(nil)).to eq({ [] => [{ type: :present, params: {} }, { type: :match, params: { pattern: /ab/ } }] })
     end
 
     it "should report only errors of failed validations" do
-      expect(v.call("cqql")).to eq({ [] => [[:match, { pattern: /ab/ }]] })
+      expect(v.call("cqql")).to eq({ [] => [{ type: :match, params: { pattern: /ab/ } }] })
     end
   end
 

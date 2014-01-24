@@ -3,11 +3,11 @@ describe Vldt::Chain do
 
   context "if the object is invalid" do
     it "should fail with the first error" do
-      expect(v.call(nil)).to eq({ [] => [[:present, {}]] })
+      expect(v.call(nil)).to eq({ [] => [{ type: :present, params: {} }] })
     end
 
     it "should fail with the second error" do
-      expect(v.call("cqql")).to eq({ [] => [[:match, { pattern: /ab/ }]] })
+      expect(v.call("cqql")).to eq({ [] => [{ type: :match, params: { pattern: /ab/ } }] })
     end
   end
 

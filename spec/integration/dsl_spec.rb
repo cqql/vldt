@@ -34,8 +34,8 @@ describe Vldt::Common do
 
   it "should validate a user" do
     expect(v.user.call({ name: "cqql#", email: "1@3", age: -3.3 })).to eq({
-      [:name] => [[:length_greater_than, { min: 6 }]],
-      [:age] => [[:integer, {}], [:positive, {}]]
+      [:name] => [{ type: :length_greater_than, params: { min: 6 } }],
+      [:age] => [{ type: :integer, params: {} }, { type: :positive, params: {} }]
     })
   end
 
@@ -60,11 +60,11 @@ describe Vldt::Common do
     }
 
     expect(v.recipe.call(recipe)).to eq({
-      [:user, :email] => [[:present, {}]],
-      [:title] => [[:string, {}]],
-      [:ingredients] => [[:array_length_greater_than, { min: 2 }]],
-      [:ingredients, 0, :unit] => [[:present, {}]],
-      [:ingredients, 1, :name] => [[:one_of, { values: ["Rice", "Tomato", "Potato"] }]]
+      [:user, :email] => [{ type: :present, params: {} }],
+      [:title] => [{ type: :string, params: {} }],
+      [:ingredients] => [{ type: :array_length_greater_than, params: { min: 2 } }],
+      [:ingredients, 0, :unit] => [{ type: :present, params: {} }],
+      [:ingredients, 1, :name] => [{ type: :one_of, params: { values: ["Rice", "Tomato", "Potato"] } }]
     })
   end
 end
