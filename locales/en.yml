@@ -1,0 +1,4 @@
+en:
+  vldt:
+    errors:
+      greater_than: "should be greater than {min}"

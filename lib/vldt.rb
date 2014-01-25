@@ -18,6 +18,8 @@ require "vldt/array"
 require "vldt/date"
 require "vldt/json"
 
+require "vldt/i18n"
+
 module Vldt
 
 end
