@@ -18,13 +18,13 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "i18n"
+  spec.add_dependency "i18n", "~> 0"
 
   spec.add_development_dependency "bundler", "~> 1.4"
   spec.add_development_dependency "rake", "~> 10.1"
-  spec.add_development_dependency "yard"
-  spec.add_development_dependency "redcarpet"
-  spec.add_development_dependency "rspec"
-  spec.add_development_dependency "pry"
-  spec.add_development_dependency "activesupport"
+  spec.add_development_dependency "yard", "~> 0"
+  spec.add_development_dependency "redcarpet", "~> 3"
+  spec.add_development_dependency "rspec", "~> 2"
+  spec.add_development_dependency "pry", "~> 0"
+  spec.add_development_dependency "activesupport", "~> 4"
 end

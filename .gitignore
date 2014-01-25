@@ -4,5 +4,8 @@
 # Generated docs
 /doc
 
+# Build artifacts
+/*.gem
+
 # Gemfile.lock
 /Gemfile.lock
