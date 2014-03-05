@@ -9,6 +9,10 @@ describe Vldt::Validate do
     expect(v.call({ key: 3 })).to eq({ [:key] => [{ type: :equals, params: { value: 5 } }] })
   end
 
+  it "should fail if the object is not a hash" do
+    expect(v.call("Not a hash")).to eq({ [] => [{ type: :hash, params: {} }] })
+  end
+
   it "should succeed if the attribute is valid" do
     expect(v.call({ key: 5 })).to eq nil
   end

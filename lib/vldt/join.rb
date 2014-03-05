@@ -9,7 +9,7 @@ module Vldt
       errors = @validations.map { |v| v.call(object) }
 
       if errors.any?
-        errors.compact.inject(Hash.new([])) do |es, e|
+        errors.compact.inject(::Hash.new([])) do |es, e|
           e.each do |k, v|
             es[k] += v
           end

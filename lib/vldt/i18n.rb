@@ -49,7 +49,7 @@ module Vldt
         [selector, new_errors]
       end
 
-      Hash[with_messages]
+      ::Hash[with_messages]
     end
 
     private

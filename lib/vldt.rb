@@ -15,6 +15,7 @@ require "vldt/common"
 require "vldt/number"
 require "vldt/string"
 require "vldt/array"
+require "vldt/hash"
 require "vldt/date"
 require "vldt/json"
 
